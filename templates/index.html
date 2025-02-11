@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment emulator</title>
+</head>
+<body>
+    <div>
+        <h5>Отправка платежа:</h5>
+    </div>
+
+    <div>
+        <form action="/" method="POST">
+            <label for="user_id"><b>user_id:</b></label>
+            <input type="number" id="user_id" name="user_id" required>
+            <br>
+            <label for="account_id"><b>account_id:</b></label>
+            <input type="number" id="account_id" name="account_id" required>
+            <br>
+            <label for="amount"><b>amount:</b></label>
+            <input type="number" id="amount" name="amount" required>
+            <br>
+            <button type="submit">Отправить платеж</button>
+        </form>
+    </div>
+
+    <div>
+        <h5>Статус:</h5>
+        {% if status_code %}
+            <p>Платеж:</p>
+                <p><b>Номер транзакции:</b> {{ transaction_id }}</p>
+                <p><b>id пользователя:</b> {{ user_id }}</p>
+                <p><b>id счета пользователя:</b> {{ account_id }}</p>
+                <p><b>Сумма платежа:</b> {{ amount }}</p>
+                <p><b>Подпись объекта :</b> {{ signature }}</p>
+           <p><b>Статус код:</b> {{ status_code }}</p>
+           <p><b>Статус результат:</b> {{ status_result }}</p>
+           <p><b>Статус сообщение:</b> {{ status_content }}</p>
+        {% else %}
+            <p>Платеж пока не отправлен</p>
+        {% endif %}
+    </div>
+</body>
+</html>
